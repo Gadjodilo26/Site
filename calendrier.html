@@ -132,6 +132,48 @@
       margin-top: 30px;
     }
 
+    /* 1. Permettre le défilement horizontal du tableau sur petits écrans */
+    .accordion-content {
+      overflow-x: auto;
+    }
+
+    /* 2. Tableau : largeur minimale pour éviter l’écrasement, mais adaptatif */
+    table.calendar {
+      min-width: 100%;
+      /* ou un min-width en px si tu veux garantir la lisibilité */
+    }
+
+    /* 3. Centrer les boutons dans leur conteneur */
+    .accordion-button {
+      display: block;
+      /* pour que margin auto fonctionne */
+      margin: 0 auto;
+      /* centre horizontalement */
+      max-width: 90%;
+      /* limite la largeur sur mobile */
+      text-align: center;
+      /* centre le texte */
+    }
+
+    /* 4. Ajustements pour petits écrans */
+    @media (max-width: 600px) {
+      .accordion-button {
+        font-size: 18px;
+        /* un peu plus petit si nécessaire */
+        padding: 10px;
+        /* allège le padding */
+      }
+
+      table.calendar th,
+      table.calendar td {
+        padding: 4px 2px;
+        /* réduit l’espacement pour tenir à l’écran */
+        font-size: 14px;
+        /* taille de texte adaptée */
+      }
+    }
+
+
     /* Impression : tout déplié */
     @media print {
       .accordion-button {
@@ -165,7 +207,7 @@
   <script src="data/events.js"></script>
 
   <script>
-    const startYear = 2025, endYear = 2026;
+    const startYear = 2025,startMonth = 6,endYear = 2026;
     const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
     function buildCalendar(year, month) {
@@ -194,7 +236,8 @@
     // Génération des mois
     const container = document.getElementById('calendar-container');
     for (let y = startYear; y <= endYear; y++) {
-      for (let m = 0; m < 12; m++) {
+      const mFrom = (y === startYear ? startMonth : 0);
+      for (let m = mFrom; m < 12; m++) {
         const title = new Date(y, m, 1).toLocaleString('fr-FR', { month: 'long', year: 'numeric' });
         const acc = document.createElement('div');
         acc.className = 'accordion';
