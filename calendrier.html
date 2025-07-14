@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Calendrier médical – Daniel</title>
+  <style>
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+      margin: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* === Accordion === */
+    .accordion {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #f2f3f5;
+    }
+
+    .accordion-button {
+      width: 100%;
+      padding: 12px 15px;
+      text-align: left;
+      font-size: 22px;
+      color: #34495e;
+      background-color: #f2f3f5;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .accordion-button:hover {
+      background-color: #d6eaf8;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px;
+      background-color: #ffffff;
+      border-top: 1px solid #ccc;
+    }
+
+    /* === Calendrier === */
+    table.calendar {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+    }
+
+    table.calendar th {
+      background-color: #aed6f1;
+      padding: 5px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    table.calendar td {
+      border: 1px solid #ddd;
+      height: 50px;
+      vertical-align: top;
+      padding: 4px;
+    }
+
+    .event {
+      display: block;
+      margin-top: 4px;
+      padding: 2px 4px;
+      background-color: #fadbd8;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    /* ==== Sticky tabs ==== */
+    .tabs {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tabs a {
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
+      font-weight: bold;
+      background: #e3f2fd;
+    }
+
+    .tabs a.active {
+      background: #bbdefb;
+    }
+
+    /* ==== Bouton de retour Accueil ==== */
+    .back-button {
+      display: block;
+      margin: 8px auto;
+      padding: 8px 12px;
+      background: #e3f2fd;
+      color: #2c3e50;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bold;
+      width: calc(50% - 16px);
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #7f8c8d;
+      margin-top: 30px;
+    }
+
+    /* Impression : tout déplié */
+    @media print {
+      .accordion-button {
+        background-color: #fff !important;
+        color: #000;
+      }
+
+      .accordion-content {
+        display: block !important;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <nav class="tabs">
+      <a href="synthese.html">Synthèse</a>
+      <a href="suivi.html">Suivi</a>
+      <a href="documents.html" class="active">Documents</a>
+    </nav>
+    <a href="index.html" class="back-button">← Accueil</a>
+  </header>
+
+  <h1>Calendrier médical – Daniel</h1>
+  <div id="calendar-container"></div>
+  <footer> <a href="index.html" class="back-button">← Accueil</a></footer>
+
+  <!-- 1. Charger la liste des événements -->
+  <script src="data/events.js"></script>
+
+  <script>
+    const startYear = 2025, endYear = 2026;
+    const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+    function buildCalendar(year, month) {
+      const first = new Date(year, month, 1);
+      const nbJours = new Date(year, month + 1, 0).getDate();
+      let html = '<table class="calendar">';
+      html += '<tr>' + days.map(d => `<th>${d}</th>`).join('') + '</tr>';
+      let day = 1, offset = (first.getDay() + 6) % 7;
+      while (day <= nbJours) {
+        html += '<tr>';
+        for (let i = 0; i < 7; i++) {
+          if ((day === 1 && i < offset) || day > nbJours) {
+            html += '<td></td>';
+          } else {
+            const cellId = `cell-${year}-${month + 1}-${day}`;
+            html += `<td id="${cellId}">${day}</td>`;
+            day++;
+          }
+        }
+        html += '</tr>';
+      }
+      html += '</table>';
+      return html;
+    }
+
+    // Génération des mois
+    const container = document.getElementById('calendar-container');
+    for (let y = startYear; y <= endYear; y++) {
+      for (let m = 0; m < 12; m++) {
+        const title = new Date(y, m, 1).toLocaleString('fr-FR', { month: 'long', year: 'numeric' });
+        const acc = document.createElement('div');
+        acc.className = 'accordion';
+        acc.innerHTML = `
+          <button class="accordion-button">
+            ${title.charAt(0).toUpperCase() + title.slice(1)}
+          </button>
+          <div class="accordion-content">
+            ${buildCalendar(y, m)}
+          </div>`;
+        container.appendChild(acc);
+      }
+    }
+
+    // Accordéon : un seul ouvert à la fois
+    document.querySelectorAll('.accordion-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.accordion-content')
+          .forEach(p => p.style.display = 'none');
+        const panel = btn.nextElementSibling;
+        panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+
+    // 2. Injection des événements depuis MEDICAL_EVENTS
+    MEDICAL_EVENTS.forEach(ev => {
+      const [year, month, day] = ev.date.split('-').map(n => parseInt(n, 10));
+      const cell = document.getElementById(`cell-${year}-${month}-${day}`);
+      if (cell) {
+        const el = document.createElement('span');
+        el.className = 'event';
+        el.textContent = ev.title;
+        cell.appendChild(el);
+      }
+    });
+  </script>
+</body>
+
+</html>
