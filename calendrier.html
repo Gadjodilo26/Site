@@ -246,7 +246,12 @@
   <footer> <a href="index.html" class="back-button">← Accueil</a></footer>
 
   <!-- 1. Charger la liste des événements -->
-  <script src="data/events.js?v=2.0"></script>
+  <script>
+  const script = document.createElement('script');
+  script.src = './data/events.js?v=' + new Date().getTime(); // Ajoute un timestamp unique
+  document.body.appendChild(script);
+</script>
+
 
   <script>
     const startYear = 2025, startMonth = 6, endYear = 2026;

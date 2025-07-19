@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <title>Planning de Traitement</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css?v=2.0">
+  <script>
+  const style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = './assets/style.css?v=' + new Date().getTime();
+  document.head.appendChild(style);
+</script>
+
 </head>
 <body>
   <header>
