@@ -5,12 +5,11 @@
   <title>Planning de Traitement</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <script>
-  const style = document.createElement('link');
-  style.rel = 'stylesheet';
-  style.href = './assets/style.css?v=' + new Date().getTime();
-  document.head.appendChild(style);
-</script>
-
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = './assets/style.css?v=' + new Date().getTime();
+    document.head.appendChild(style);
+  </script>
 </head>
 <body>
   <header>
@@ -30,58 +29,119 @@
 
     <!-- Section Traitements -->
     <section id="traitements" class="tab-content active">
-      <h1>💊 Explication simple des traitements</h1>
+      <h1>💊 Explication détaillée des traitements</h1>
 
       <div class="section">
         <h2>🧬 Traitements d’immunothérapie</h2>
 
-        <!-- Chaque traitement dans un wrapper .treatment-item -->
+        <!-- Daratumumab SC -->
         <div class="treatment-item">
           <h3>Daratumumab SC</h3>
-          <p><strong>Mode :</strong> Injection sous-cutanée (en ambulatoire)<br>
-          <strong>Fréquence :</strong> 1 fois par semaine<br>
-          <strong>Jours :</strong> 21, 28 juillet, 4, 11 août 2025</p>
+          <p>
+            <strong>Mode :</strong> Injection sous‑cutanée en ambulatoire<br>
+            <strong>Fréquence :</strong> 1 fois par semaine<br>
+            <strong>Jours :</strong> 21, 28 juillet, 4, 11 août 2025<br>
+            <!-- Mécanisme d'action -->
+            <strong>Mécanisme :</strong> Anticorps monoclonal anti‑CD38, induit la lyse des plasmocytes malins via complément et ADCC.<br>
+            <!-- Prémédication -->
+            <strong>Prémédication :</strong> Corticostéroïdes (20 mg de dexaméthasone) + antihistaminique + antipyrétique 60 min avant l’injection pour réduire le risque de réaction infusionnelle.<br>
+            <!-- Effets indésirables -->
+            <strong>Effets indésirables fréquents :</strong> IRR (réactions infusionnelles), neutropénie, fatigue, thrombopénie.<br>
+            <!-- Surveillance -->
+            <strong>Surveillance :</strong> NFS hebdomadaire, bilan hépatique, statut vaccinal (anti‑pneumocoque, anti‑grippe), prévention des infections opportunistes.
+          </p>
         </div>
 
+        <!-- Velcade SC -->
         <div class="treatment-item">
-          <h3>Velcade SC</h3>
-          <p><strong>Mode :</strong> Injection sous-cutanée (en ambulatoire)<br>
-          <strong>Fréquence :</strong> 1 fois par semaine<br>
-          <strong>Jours :</strong> 21, 28 juillet, 4, 11 août 2025</p>
+          <h3>Velcade SC (Bortezomib)</h3>
+          <p>
+            <strong>Mode :</strong> Injection sous‑cutanée<br>
+            <strong>Fréquence :</strong> 1 fois par semaine<br>
+            <strong>Jours :</strong> 21, 28 juillet, 4, 11 août 2025<br>
+            <!-- Mécanisme d'action -->
+            <strong>Mécanisme :</strong> Inhibiteur réversible du protéasome 26S, provoque accumulation de protéines et apoptose des cellules myélomateuses.<br>
+            <!-- Administration et posologie -->
+            <strong>Posologie :</strong> 1,3 mg/m² par injection, ajuster selon neuropathie périphérique.<br>
+            <!-- Effets indésirables -->
+            <strong>EI majeurs :</strong> Neuropathie périphérique, thrombocytopénie, diarrhée, fatigue.<br>
+            <!-- Surveillance -->
+            <strong>Surveillance :</strong> Évaluation neurologique avant chaque cycle, NFS, créatinine, prévention de l’herpès (voir valaciclovir).
+          </p>
         </div>
 
+        <!-- Lénalidomide -->
         <div class="treatment-item">
           <h3>Lénalidomide 25 mg</h3>
-          <p><strong>Posologie :</strong> 1 gélule par jour<br>
-          <strong>Durée :</strong> du 21 juillet au 10 août inclus</p>
+          <p>
+            <strong>Posologie :</strong> 1 gélule par jour (matin)<br>
+            <strong>Durée :</strong> du 21 juillet au 10 août inclus<br>
+            <!-- Mécanisme d'action -->
+            <strong>Mécanisme :</strong> Immunomodulateur et anti‑angiogénique, stimule les cellules T et NK, inhibe les cytokines pro‑tumorales.<br>
+            <!-- Précautions -->
+            <strong>Précautions :</strong> Surveillance hématologique bi‑hebdomadaire, risque de neutropénie et thrombopénie. Adapter la dose si IRCT.<br>
+            <!-- Thromboprophylaxie -->
+            <strong>Thromboprophylaxie :</strong> Aspirine 100 mg/j ou anticoagulant en présence de facteurs de risque.
+          </p>
         </div>
 
+        <!-- Dexaméthasone -->
         <div class="treatment-item">
           <h3>Dexaméthasone 40 mg</h3>
-          <p><strong>Posologie :</strong> 1 gélule par semaine<br>
-          <strong>Jours :</strong> 21, 28 juillet, 4, 11 août 2025</p>
+          <p>
+            <strong>Posologie :</strong> 1 gélule par semaine<br>
+            <strong>Jours :</strong> 21, 28 juillet, 4, 11 août 2025<br>
+            <!-- Rôle -->
+            <strong>Rôle :</strong> Synergie avec immunothérapie et agents alkylants, effet anti‑inflammatoire et anti‑tumoral.<br>
+            <!-- Effets indésirables -->
+            <strong>EI :</strong> Hyperglycémie, insomnie, ostéoporose, risque infectieux accru.<br>
+            <!-- Surveillance -->
+            <strong>Surveillance :</strong> Glycémie à jeun, tension artérielle, bilan osseux.
+          </p>
         </div>
       </div>
 
       <div class="section">
-        <h2>💊 Traitements associés</h2>
+        <h2>💊 Traitements associés et prophylaxie</h2>
 
+        <!-- Valaciclovir -->
         <div class="treatment-item">
           <h3>Valaciclovir 500 mg</h3>
-          <p><strong>Posologie :</strong> 1 gélule matin + 1 soir<br>
-          <strong>Durée :</strong> tous les jours, sans interruption</p>
+          <p>
+            <strong>Posologie :</strong> 1 gélule matin + 1 soir<br>
+            <strong>Durée :</strong> tous les jours, sans interruption<br>
+            <!-- Indication -->
+            <strong>Indication :</strong> Prophylaxie anti‑herpétique (réactivation VZV/HVZ liée au bortezomib).<br>
+            <!-- Surveillance -->
+            <strong>Surveillance :</strong> Fonction rénale (ajuster la dose si clairance < 30 mL/min), suivi des effets digestifs.
+          </p>
         </div>
 
+        <!-- Bactrim Forte -->
         <div class="treatment-item">
           <h3>Bactrim Forte</h3>
-          <p><strong>Posologie :</strong> 1 gélule 3 fois par semaine<br>
-          <strong>Jours :</strong> lundi, mercredi, vendredi</p>
+          <p>
+            <strong>Posologie :</strong> 1 gélule 3 fois par semaine<br>
+            <strong>Jours :</strong> lundi, mercredi, vendredi<br>
+            <!-- Indication -->
+            <strong>Indication :</strong> Prophylaxie contre Pneumocystis jirovecii chez patients sous corticoïdes et immunosuppresseurs.<br>
+            <!-- EI et surveillance -->
+            <strong>EI :</strong> Rash, cytopénies, foie (hépatotoxicité).<br>
+            <strong>Surveillance :</strong> NFS hebdomadaire, bilan hépatique.
+          </p>
         </div>
 
+        <!-- Eliquis -->
         <div class="treatment-item">
           <h3>Eliquis 2,5 mg</h3>
-          <p><strong>Posologie :</strong> 1 gélule matin + 1 soir<br>
-          <strong>Durée :</strong> tous les jours <span class="important">sauf les 21 et 22 juillet</span></p>
+          <p>
+            <strong>Posologie :</strong> 1 gélule matin + 1 soir<br>
+            <strong>Durée :</strong> tous les jours <span class="important">sauf les 21 et 22 juillet</span><br>
+            <!-- Indication -->
+            <strong>Indication :</strong> Thromboprophylaxie en cas de thalidomide ou lénalidomide (risque thromboembolique).<br>
+            <!-- Surveillance -->
+            <strong>Surveillance :</strong> Fonction rénale (créat. <span>&lt; 30 mL/min</span> contre‑indication), signes de saignement.
+          </p>
         </div>
       </div>
     </section>
@@ -102,10 +162,10 @@
       </div>
 
       <div class="section">
-        <h2>Lundi (21, 28 juillet, 4, 11 août)</h2>
+        <h2>Lundi (21, 28 juillet, 4, 11 août)</h2>
         <ul>
-          <li>Daratumumab (injection)</li>
-          <li>Velcade (injection)</li>
+          <li>Daratumumab (injection) — surveiller IRR 3 h post‑injection</li>
+          <li>Velcade (injection) — neurologie pré et post‑dose</li>
           <li>Dexaméthasone 40 mg (1 gélule)</li>
           <li>Bactrim Forte (1 gélule)</li>
         </ul>

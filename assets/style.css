@@ -51,6 +51,68 @@ a {
   width: calc(50% - 16px);
 }
 
+/* Dans assets/style.css */
+.tab-content .section ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+
+/* === Style des blocs de traitement === */
+.treatment-item {
+  /* Structure et espacement */
+  display: block;
+  background-color: #ffffff;       /* Fond blanc pour un contraste lisible */
+  border: 1px solid #e0e0e0;       /* Bordure claire et fine */
+  border-radius: 8px;              /* Bords arrondis doux */
+  padding: 16px;                   /* Espace intérieur généreux */
+  margin-bottom: 16px;             /* Espace entre chaque item */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Légère ombre portée */
+
+  /* Texte */
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #333333;
+  line-height: 1.5;
+
+  /* Transition pour effet au survol */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Effet au survol : mise en relief */
+.treatment-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Titres à l’intérieur */
+.treatment-item h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+/* Paragraphes et listes internes */
+.treatment-item p,
+.treatment-item ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Gras et labels */
+.treatment-item strong {
+  color: #2c3e50;
+}
+
+/* Note importante */
+.treatment-item .important {
+  background-color: #ffefc2;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
 /* ==== Sections synthèse & suivi ==== */
 main {
   padding: 16px;
